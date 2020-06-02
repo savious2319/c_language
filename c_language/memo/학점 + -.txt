@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+void main() {
+	int score = 0;			//점수를 저장할 score 변수를 선언한뒤 0으로 초기화
+	char grade = ' ';		//학점을 저장할 grade 변수를 선언한뒤 ' '으로 초기화
+	char plusMinus = ' ';	//등급?을 저장할 plusMinus 변수를 선언한뒤 ' '으로 초기화
+	puts("*** 성적 처리 프로그램 ***");
+	puts("성적을 입력하세요.(0 ~ 100점)");
+	scanf("%d", &score);
+
+	if (0 > score || score > 100) {
+		puts("잘못된 점수입니다.");
+	}else {
+		if (90 <= score && score <= 100) {		//A학점 범위
+			grade = 'A';
+			if (score % 10 >= 5) {				//score를 10으로 나눈 나머지의값을(일의자리)가 5이상인경우 plusMinus'+'를 저장
+				plusMinus = '+';
+			}else if (score % 10 <= 4) {		//score를 10으로 나눈 나머지의값을(일의자리)가 4이하인경우 plusMinus'-'를 저장
+				plusMinus = '-';
+			}
+		}else if (80 <= score && score <= 89) {	//B학점 범위
+			grade = 'B';
+			if (score % 10 >= 5) {
+				plusMinus = '+';
+			}else if (score % 10 <= 4) {
+				plusMinus = '-';
+			}
+		}else if (70 <= score && score <= 89) {	//C학점 범위
+			grade = 'C';
+			if (score % 10 >= 5) {
+				plusMinus = '+';
+			}else if (score % 10 <= 4) {
+				plusMinus = '-';
+			}
+		}else if (60 <= score && score <= 69) {	//D학점 범위
+			grade = 'D';
+			if (score % 10 >= 5) {
+				plusMinus = '+';
+			}else if (score % 10 <= 4) {
+				plusMinus = '-';
+			}
+		}else{									//F학점
+			grade = 'F';
+			plusMinus = ' ';
+		}
+	printf("점수 : %d점\t학점 : %c%c학점\n", score, grade, plusMinus);
+	}
+}

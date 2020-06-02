@@ -1,0 +1,11 @@
+﻿  arrayHeap03.c
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day16\arraypointer\arrayheap03.c(18): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day16\arraypointer\arrayheap03.c(27): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day16\arraypointer\arrayheap03.c(32): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day16\arraypointer\arrayheap03.c(68): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int **'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day16\arraypointer\arrayheap03.c(69): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+  arrayPointer.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day16\Debug\arrayPointer.exe
+  arrayPointer.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day16\Debug\arrayPointer.pdb (Full PDB)

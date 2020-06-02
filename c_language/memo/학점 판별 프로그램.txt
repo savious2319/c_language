@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+void main() {
+
+	//선언부
+	int iScore;
+	double dScore;
+	double dMi;
+	char grade = ' ';	//통용범위 grade는 7번부터 하위에 있는 소스에서 언제나 사용할 수 있는 변수
+	char pm = ' ';
+
+	// 학점+		각 구간별 5점대 이상이면	학점+ 예) 98 A+
+	// 학점-				 4점대 이하면	학점- 예) 73 C-
+
+	//입력 받기
+	printf("점수를 입력하세요 : ");	scanf("%d", &iScore);
+
+	//조건부
+
+
+	if (0 <= iScore && iScore <= 100) {
+		// 학점 판별
+		if (90 <= iScore && iScore <= 100) {
+			grade = 'A';
+		}
+		else if (80 <= iScore && iScore <= 89) {
+			grade = 'B';
+		}
+		else if (70 <= iScore && iScore <= 79) {
+			grade = 'C';
+		}
+		else if (60 <= iScore && iScore <= 69) {
+			grade = 'D';
+		}
+		else if (50 <= iScore && iScore <= 59) {
+			grade = 'E';
+		}
+		else {
+			grade = 'F';
+		}
+
+		//+, - 판별
+		dScore = iScore * 0.1;
+		iScore = (int)dScore;
+
+		dMi = dScore - iScore;
+
+		if (dMi >= 0.5) {
+			pm = '+';
+		}
+		else {
+			pm = '-';
+		}
+		iScore = (int)(10 * dScore);
+
+		// 학점 출력
+		printf("점수 : %d점\t학점 : %c%c학점\n", iScore, grade, pm);
+
+	}
+	else {
+		puts("잘못 입력했습니다.");
+	}
+
+}//main

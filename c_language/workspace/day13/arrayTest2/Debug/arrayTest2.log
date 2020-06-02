@@ -1,0 +1,15 @@
+﻿  array08.c
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(19): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[4]'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(20): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(21): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(24): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[4]'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(25): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(26): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(29): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[4]'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(30): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(31): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(34): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int (*)[4]'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(35): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day13\arraytest2\array08.c(36): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+  arrayTest2.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day13\Debug\arrayTest2.exe
+  arrayTest2.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day13\Debug\arrayTest2.pdb (Full PDB)

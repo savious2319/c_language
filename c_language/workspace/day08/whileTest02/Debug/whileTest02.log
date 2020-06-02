@@ -1,0 +1,5 @@
+﻿  whileTest03_백성민.c
+d:\---\gb_0900_05_bsm\c_language\workspace\day07\whiletest\whiletest03_백성민.c(53): warning C4013: 'getch'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+d:\---\gb_0900_05_bsm\c_language\workspace\day07\whiletest\whiletest03_백성민.c(54): warning C4013: 'system'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  whileTest02.vcxproj -> D:\---\GB_0900_05_BSM\c_language\workspace\day08\Debug\whileTest02.exe
+  whileTest02.vcxproj -> D:\---\GB_0900_05_BSM\c_language\workspace\day08\Debug\whileTest02.pdb (Full PDB)

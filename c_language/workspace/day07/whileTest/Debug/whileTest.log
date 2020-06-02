@@ -1,0 +1,5 @@
+﻿  whileTest03_백성민.c
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day07\whiletest\whiletest03_백성민.c(65): warning C4013: 'getch'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day07\whiletest\whiletest03_백성민.c(66): warning C4013: 'system'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+  whileTest.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day07\Debug\whileTest.exe
+  whileTest.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day07\Debug\whileTest.pdb (Full PDB)

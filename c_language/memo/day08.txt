@@ -1,0 +1,158 @@
+day08
+1. 제어문
+     (2) while : 식당 영수증 출력 예제
+     (3) do~ while
+
+   3)기타제어문
+     (1) break
+     (2) continue
+     (3) return
+     (4) goto (x) 사용하지 않는 제어문
+        1
+        2  GoTo_Label_01:
+        3
+        4  if(조건)
+                      goto GoTo_Label_01;
+
+           goto 옆에 있는 영어단어로 바로 점프할 것!
+
+
+2. 기억부류 (storage class)
+   변수 선언 시, ram 내부에 어떻게 만들어지고, 변수의 생명주기가 
+   어디까지인지 확인해 본다.
+
+  1)변수
+    (1) stack 영역
+        -지역변수
+    (2) heap 영역
+        -동적메모리
+    (3) 데이터영역
+        -전역변수
+        -정적변수
+
+  
+
+	RAM
+
+	stack	       heap	                            데이터	                            영역
+	지역	    동적메모리                                  전역,정적
+             쓰레기			                        자동초기화
+           함수종료시                                               프로그램 종료시
+	auto                                                         extern, static
+
+집에서 storageTest01, Test02, 03 다시 처음부터 다시 혼자서 해보기!!!
+
+2)함수 (function)
+
+	1) 표준함수, 사용자정의 함수
+	     (1) 표준 함수 : 헤더파일에 이미 정의 되어 있는 함수
+		           <time.h> <math.h> <conio.h> .....
+		           < > 로 헤더파일을 include 한다.
+			헤더 파일안에는 이미 사용할 함수들의 수행 명령문들이 들어있다.
+
+	     (2) 사용자 정의 함수: 개발하다가 필요에 따라 그때 그때 만들어서 사용하는 함수 
+			       헤러부와 바디(main()) 사이에 기재(작성=선언)하게 된다.
+
+	2) 사용자 정의함수 만들기
+
+		#include <stdio.h>
+
+		void(리턴타입) 함수명()  --> 함수명 겹치면 안됨!
+				     --> ( ) 소괄호 (변수 선언을 할 수 있다...) 소괄호 안에 선언하는 변수를 
+                                                             매개변수(parameter) 매개변수는 어디선가 호출할 때, "인자"를 넣게 된다.
+										 (argument)
+		{
+
+		}
+
+		모든 함수는 위에 구성요소로부터 출발한다! (C++, 자바, 자바스크립트...(파이썬 제외)
+
+		void main()
+		{
+
+		}
+		
+		void : 리턴값이 없는(return 키워드를 사용하지 않을 때)
+		        void 대신, int, float, double, 포인터, 구조체 등이 올 수 있다.
+		        이때는 return 키워드 뒤에 데어터가 있어야 한다.
+
+		int fct(){
+			return 0;         //return 1.1;  -->  int fct라고 int를 쓰면
+   				      // int fct = 1.1;     0.1이라는 값손실!!!
+		}
+
+		int main(){                      <------ 표준형 main함수 --> int 반환타입이 있다! 그렇다면...
+
+			return 0;           <-- 이렇게 return 뒤에 0이라는 값이 붙어있다.
+				         <-- ※ main 함수의 종료는 프로그램의 종료를 의미한다!
+		}
+
+
+	3) 함수 선언과 호출
+
+		선언(=작성) : 헤더파일 ~ main() 사이에 작성해 놓자
+		호출(=정의) : 함수명(); <-- call stack 이라는 함수 전용 메모리 공간에 함수가 들어가게 된다!
+
+		#include <stdio.h>
+				
+		void fct();    <-- 함수원형(prototype) 전방선언!
+		void fct1();   <--- 소스파일의 윤곽이 보이기 때문에 전방선언을 한다
+		void fct2();   <--- 다른 소스파일의 함수를 쓰고 싶을 때 원형선언을 해야한다.
+		void fct3();
+		void fct4();
+		void main;
+		{
+			fct();   <--- 호출!!!
+		}
+		void fct()    <-- 함수를 밑에 선언했네? 1)위로 옮겨주면 된다! 2) "함수원형"(prototype)을 전방선언하면 됨
+		{
+		}			
+
+		void fct1(){}
+		void fct2(){}
+		void fct3(){}
+		void fct4(){}
+
+
+	4) 함수 매개변수 전달
+
+		void fct( int a, char b, double d, int c)       a~d <-- 매개변수(parameter)
+		{
+
+		}
+
+		fct();  <---에러!  선언시 만들었던 매개변수 리스트들 하고, 호출할 때 인자하고 서로 맞지 않기 때문에
+
+		fct( 10, 'A', 1.1, 20); <--- 인자 4개ㅐ를 매개변수한테 보내야 정상 작동 한다!
+
+		fct(5, 'B', 1, 10); <--- int a = 5  char b = 'B'  double d = 1  int c = 10
+
+
+	5) return
+
+		int getHap( int kor, int eng, int math)
+		{
+			//int tot = kor + eng + math;
+			//return tot; ---> output 시킨다
+
+			return = kor+eng+math;      //return 뒤에 수식도 쓸 수 있구나!
+					           //결과값이 "값(=데이터)"로 나오면 되는 구나!
+		}
+
+		double getDiv(int a, int b){       <----printf("%.1f\n", getDiv(5, 2));
+
+			return a / b;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+

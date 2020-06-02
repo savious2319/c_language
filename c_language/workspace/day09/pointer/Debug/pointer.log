@@ -1,0 +1,9 @@
+﻿  pointer01.c
+d:\---\gb_0900_05_bsm\c_language\workspace\day09\pointer\pointer01.c(23): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+d:\---\gb_0900_05_bsm\c_language\workspace\day09\pointer\pointer01.c(27): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+d:\---\gb_0900_05_bsm\c_language\workspace\day09\pointer\pointer01.c(29): warning C4477: 'printf' : 서식 문자열 '%X'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+d:\---\gb_0900_05_bsm\c_language\workspace\day09\pointer\pointer01.c(30): warning C4477: 'printf' : 서식 문자열 '%x'에 'unsigned int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+d:\---\gb_0900_05_bsm\c_language\workspace\day09\pointer\pointer01.c(47): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'int *'입니다.
+d:\---\gb_0900_05_bsm\c_language\workspace\day09\pointer\pointer01.c(47): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'int *'입니다.
+  pointer.vcxproj -> D:\---\GB_0900_05_BSM\c_language\workspace\day09\Debug\pointer.exe
+  pointer.vcxproj -> D:\---\GB_0900_05_BSM\c_language\workspace\day09\Debug\pointer.pdb (Full PDB)

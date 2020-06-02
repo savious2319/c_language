@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+﻿  function.vcxproj -> D:\---\GB_0900_05_BSM\c_language\workspace\day08\Debug\function.exe
+  function.vcxproj -> D:\---\GB_0900_05_BSM\c_language\workspace\day08\Debug\function.pdb (Full PDB)
+=======
+﻿  func5.c
+  function.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day08\Debug\function.exe
+  function.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day08\Debug\function.pdb (Full PDB)
+>>>>>>> b058ff51d5aaf7e4234ef7b95055b06128f67dc7

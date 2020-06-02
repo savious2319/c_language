@@ -1,0 +1,30 @@
+
+2. 제어문
+
+솔루션 day05
+프로젝트 ifTest
+소스파일 ifTest01.c
+
+   1)조건문
+     (1) if문
+     (2) if else
+     (3) if else if else
+----------------------------------------------------------------------------------
+day06
+솔루션 - day06
+프로젝트 - switchTest
+소스파일 - switchTest01.c
+
+     (4) switch case
+switchTest03.c 완성하기
+
+   2)반복문
+     (1) for
+     (2) while
+     (3) do~ while
+
+   3)기타제어문
+     (1) break
+     (2) continue
+     (3) return
+     (3) goto (x)

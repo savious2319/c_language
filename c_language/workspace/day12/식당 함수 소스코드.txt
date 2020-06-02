@@ -1,0 +1,30 @@
+int choiceMenu(){
+
+1. 김치찌개
+2. 된장찌개
+3. 종료
+scanf("%d", &meneNum);
+return 번호;
+
+
+
+}
+
+
+switch( choiceMenu() ) {
+	int menuNum = 0;
+	while( (menuNum = choiceMenu() ) != 3 ){
+
+	switch( menuNum ){
+	case 1:	
+	case 2
+
+	}
+    }	
+}
+============================================================
+	if( is함수() ){ //함수에서 리턴값이 1,0 -> 참 거짓. 굳이 연산이 필요없음 == 1(x)
+		//1이면 무조건 이 영역으로 들어온다.
+	}else{
+	
+	}

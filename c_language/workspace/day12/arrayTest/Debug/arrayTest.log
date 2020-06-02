@@ -1,0 +1,9 @@
+﻿  lotto_rock-paper-scissors_백성민.c
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day12\arraytest\lotto_rock-paper-scissors_백성민.c(24): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day12\arraytest\lotto_rock-paper-scissors_백성민.c(99): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+\\vmware-host\shared folders\도큐멘트\github\------\gb_0900_05_bsm\c_language\workspace\day12\arraytest\lotto_rock-paper-scissors_백성민.c(135): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  arrayTest.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day12\Debug\arrayTest.exe
+  arrayTest.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\GitHub\------\GB_0900_05_BSM\c_language\workspace\day12\Debug\arrayTest.pdb (Full PDB)
