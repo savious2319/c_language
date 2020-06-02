@@ -58,75 +58,86 @@ typedef struct TravelInfo {
 	char destination[20];
 	int tourist;
 	int cost;
-	int idNum;
 	
 }tInfo;
 typedef struct List {
+	int idNum;
 	tInfo t;
 	struct List *next;
 	struct List *prev;
 
 }list;
 //메뉴 함수
-void menu(list *pStart, list *new_node, list *current);
-//추가 함수
-void inputData(list **pStart, list **new_node, list **current);
+void menu(int cnt, list *pStart, list *new_node, list *current);
+//정보 입력 함수
+void inputData(int *cnt, list **pStart, list **new_node, list **current);
 //전체 정보 출력 함수
-void displayAllData(list **pStart, list **current);
-//보고싶은 데이터 함수
-void displaySelectedData();
-//삽입 함수
-void insertData();
-//삭제 함수
-void deleteData();
-//수정 함수
+void displayAllData(list *pStart, list *current);
+//사용자가 원하는 정보 출력 함수
+void displaySelectedData(list *pStart);
+//정보 추가 함수
+void addData(int *cnt, list **pStart, list **new_node, list **current);
+//정보 삭제 함수
+void deleteData(list *new_node, list *current);
+//정보 수정 함수
 void updateData();
 
 void main() {
-
+	int cnt = 0;
 	list *pStart, *new_node, *current;
 	pStart = new_node = current = NULL;
 
 	//메뉴
-	menu(pStart, new_node, current);
+	menu(cnt, pStart, new_node, current);
+
+	//메모리 해제
+	while (pStart != NULL) {
+		list *temp;
+		temp = pStart;
+		pStart = pStart->next;
+		free(temp);
+		printf("메모리 해제\n");
+	}
 
 }
 
-void menu(list *pStart, list *new_node, list *current) {
+void menu(int cnt, list *pStart, list *new_node, list *current) {
 	while (1) {
 		int choice = 0;
-		puts("1. 여행 정보 추가하기\n2. 여행 정보 삭제하기\n3. 여행 정보 수정하기\n4. 원하는 여행 정보 보기\n5. 전체 여행 정보 보기\n6. 종료\n");
+		puts("1. 여행 정보 입력하기\n2. 여행 정보 추가하기\n3. 여행 정보 수정하기\n4. 여행 정보 삭제하기\n5. 원하는 여행 정보보기\n6. 전체 여행 정보보기\n7. 종료");
 		printf("원하는 번호를 선택해 주세요 : "); scanf("%d", &choice);
-		if (choice == 6) { break; }
+		if (choice == 7) { break; }
 		switch (choice) {
-		case 1: inputData(&pStart, &new_node, &current); break;
-		case 2: 
+		case 1: inputData(&cnt, &pStart, &new_node, &current); break;
+		case 2: addData(&cnt, &pStart, &new_node, &current); break;
 		case 3: 
-		case 4: displaySelectedData(&pStart); break;
-		case 5: displayAllData(&pStart, &current); break;
+		case 4:
+		case 5: displaySelectedData(pStart); break;
+		case 6: displayAllData(pStart, current); break;
+			
 		default: break;
 		}
 	}
 
 }
 
-void inputData(list **pStart, list **new_node, list **current) {
+void inputData(int *cnt, list **pStart, list **new_node, list **current) {
 	int input = 0;
 
-	printf("몇 명의 데이터를 입력하시겠습니까? : "); scanf("%d", &input);
+	printf("몇 명의 여행 정보를 입력하시겠습니까? : "); scanf("%d", &input);
 	puts("");
 	for (int i = 0; i < input; i++) {
-		//pStart->next = NULL;
-		//pStart->prev = NULL;
 		getchar();
 		*new_node = (list *)malloc(sizeof(list));
-		printf("손님 ID 번호는 %d 입니다\n", i + 1);
-		(*new_node)->t.idNum = i + 1;
-		printf("%d번 손님 여행 목적지를 입력하세요 : ", i + 1); gets((*new_node)->t.destination);
-		printf("%d번 손님 여행 인원수를 입력하세요 : ", i + 1); scanf("%d", &(*new_node)->t.tourist);
-		printf("%d번 손님 여행 경비를 입력하세요 : ", i + 1); scanf("%d", &(*new_node)->t.cost);
+		printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+		printf("여행자 ID 번호 : %d\n", ++(*cnt));
+		printf("여행 목적지를 입력하세요 : "); gets((*new_node)->t.destination);
+		printf("여행 인원수를 입력하세요 : "); scanf("%d", &(*new_node)->t.tourist);
+		printf("여행 경비를 입력하세요 : "); scanf("%d", &(*new_node)->t.cost);
 		puts("");
 		(*new_node)->next = NULL;
+		//(*new_node)->prev = NULL;
+		(*new_node)->idNum = *cnt;
 		if (*pStart == NULL) {
 			*pStart = *new_node;
 			*current = *pStart;
@@ -140,33 +151,94 @@ void inputData(list **pStart, list **new_node, list **current) {
 	}
 }
 
-void displayAllData(list **pStart, list **current) {
-	
-	(*current) = *pStart;
-	while ((*current) != NULL) {
-	
-	printf("여행 목적지 : %s\n", (*current)->t.destination);
-	printf("여행 인원수 : %d명\n", (*current)->t.tourist);
-	printf("여행 경비 : %d원\n", (*current)->t.cost);
-	
-	(*current) = (*current)->next;
-	
+void addData(int *cnt, list **pStart, list **new_node, list **current) {
+	int input = 0;
+
+	printf("몇 명의 정보를 더 추가 입력하시겠습니까? : "); scanf("%d", &input);
+		
+	puts("");
+	for (int i = 0; i < input; i++) {
+		getchar();
+		*new_node = (list *)malloc(sizeof(list));
+		printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+		printf("여행자 ID 번호 : %d\n", ++(*cnt));
+		printf("여행 목적지를 입력하세요 : "); gets((*new_node)->t.destination);
+		printf("여행 인원수를 입력하세요 : "); scanf("%d", &(*new_node)->t.tourist);
+		printf("여행 경비를 입력하세요 : "); scanf("%d", &(*new_node)->t.cost);
+		puts("");
+		(*new_node)->next = NULL;
+		//(*new_node)->prev = NULL;
+		(*new_node)->idNum = *cnt;
+		if (*pStart == NULL) {
+			*pStart = *new_node;
+			*current = *pStart;
+		}
+		else {
+			(*current)->next = *new_node;
+			(*new_node)->prev = *current;
+			*current = (*new_node);
+		}
 	}
 }
 
-void displaySelectedData(list **pStart) {
+void update() {
+
+
+}
+
+void deleteData(list **pStart, list *current) {
+	int num = 0;
+	printf("삭제하고 싶은 손님 ID번호를 입력해 주세요 : "); scanf("%d", &num);
+	list *remove = NULL;
+	current = *pStart;
+	for (int i = 0; i < num - 1; i++) {
+		current = current->next;
+
+	}
+	if (*pStart == remove) {
+		pStart = remove->next;
+	}
+	if (remove->next != NULL) {
+		remove->next->prev = remove->prev;
+	}
+
+	if (remove->prev != NULL) {
+		remove->prev->next = remove->next;
+	}
+	
+
+	free(remove);
+	
+}
+
+void displaySelectedData(list *pStart) {
 	
 	int num = 0;
 	printf("손님 id 번호를 입력하세요 : "); scanf("%d", &num);
-	list *search = *pStart;
+	list *search = pStart;
 	for (int i = 0; i < num - 1; i++) {
 	search = search->next;
 	}
-
+	printf("┏━━━━━ %d번 손님 여행 정보 ━━━━━┓\n", search->idNum);
 	printf("여행 목적지 : %s\n", search->t.destination);
 	printf("여행 인원수 : %d명\n", search->t.tourist);
 	printf("여행 경비 : %d원\n", search->t.cost);
-
+	puts("");
 }
 
+void displayAllData(list *pStart, list *current) {
+	
+	current = pStart;
+	while (current != NULL) {
+	
+	printf("┏━━━━━ %d번 손님 여행 정보 ━━━━━┓\n", current->idNum);
+	printf("여행 목적지 : %s\n", current->t.destination);
+	printf("여행 인원수 : %d명\n", current->t.tourist);
+	printf("여행 경비 : %d원\n", current->t.cost);
+	puts("");
+	
+	current = current->next;
+	
+	}
+}
 
