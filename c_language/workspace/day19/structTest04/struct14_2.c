@@ -68,13 +68,13 @@ typedef struct List {
 
 }list;
 //메뉴 함수
-void menu(int cnt, list *pStart, list *new_node, list *current);
+void menu(int *cnt, list *pStart, list *new_node, list *current);
 //정보 입력 함수
 void inputTrvInfo(int *cnt, list **pStart, list **new_node, list **current);
 //정보 추가 함수
 void addTrvInfo(int *cnt, list **pStart, list **new_node, list **current);
 //정보 수정 함수
-void updateTrvInfo();
+void updateTrvInfo(list **pStart, list **current);
 //정보 삽입 함수
 void insertTrvInfo(list **pStart, list **new_node, list **current);
 //정보 삭제 함수
@@ -85,7 +85,7 @@ void displaySelectedTrvInfo(list *pStart);
 void displayAllTrvInfo(list *pStart, list *current);
 
 void main() {
-	int cnt = 0;
+	int *cnt = 0;
 	list *pStart, *new_node, *current;
 	pStart = new_node = current = NULL;
 
@@ -103,22 +103,21 @@ void main() {
 
 }
 
-void menu(int cnt, list *pStart, list *new_node, list *current) {
+void menu(int *cnt, list *pStart, list *new_node, list *current) {
 	while (1) {
 		int choice = 0;
 		puts("1. 여행 정보 입력하기\n2. 여행 정보 추가하기\n3. 여행 정보 수정하기\n4. 여행 정보 삽입하기\n5. 여행 정보 삭제하기\n6. 원하는 여행 정보보기\n7. 전체 여행 정보보기\n8. 종료");
 		printf("원하는 번호를 선택해 주세요 : "); scanf("%d", &choice);
 		if (choice == 8) { break; }
 		switch (choice) {
-		case 1: inputData(&cnt, &pStart, &new_node, &current); break;
-		case 2: addData(&cnt, &pStart, &new_node, &current); break;
-		case 3: updateTrvInfo(); break;
+		case 1: inputTrvInfo(&cnt, &pStart, &new_node, &current); break;
+		case 2: addTrvInfo(&cnt, &pStart, &new_node, &current); break;
+		case 3: updateTrvInfo(&pStart, &current); break;
 		case 4: insertTrvInfo(&pStart, &new_node, &current); break;
 		case 5: deleteTrvInfo(&pStart, &current); break;
-		case 6: displaySelectedData(pStart); break;
-		case 7: displayAllData(pStart, current); break;
-			
-		default: break;
+		case 6: displaySelectedTrvInfo(pStart); break;
+		case 7: displayAllTrvInfo(pStart, current); break;
+		default: puts("잘못된 번호를 입력하셨습니다. 메뉴 1~8 선택"); break;
 		}
 	}
 
@@ -181,41 +180,84 @@ void addTrvInfo(int *cnt, list **pStart, list **new_node, list **current) {
 			(*new_node)->prev = *current;
 			*current = (*new_node);
 		}
+		
 	}
 }
 
-void updateTrvInfo() {
-
+void updateTrvInfo(list **pStart, list **current) {
+	int updateNum = 0;
+	printf("정보를 수정하고 싶은 ID번호를 입력해주세요? : "); scanf("%d", &updateNum); getchar();
+	*current = *pStart;
+	for (int i = 0; i < updateNum - 1; i++) {
+		*current = (*current)->next;
+	}
+	printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+	printf("여행 목적지를 입력하세요 : "); gets((*current)->t.destination);
+	printf("여행 인원수를 입력하세요 : "); scanf("%d", &(*current)->t.tourist);
+	printf("여행 경비를 입력하세요 : "); scanf("%d", &(*current)->t.cost);
+	puts("");
 
 }
 
 void insertTrvInfo(list **pStart, list **new_node, list **current) {
-
-
+	int insertNum = 0;
+	printf("정보를 삽입하고 싶은 위치는 몇번째인가요? : "); scanf("%d", &insertNum);
+	getchar();
+	*current = *pStart;
+	*new_node = (list *)malloc(sizeof(list));
+	printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+	printf("여행 목적지를 입력하세요 : "); gets((*new_node)->t.destination);
+	printf("여행 인원수를 입력하세요 : "); scanf("%d", &(*new_node)->t.tourist);
+	printf("여행 경비를 입력하세요 : "); scanf("%d", &(*new_node)->t.cost);
+	puts("");
+	for (int i = 0; i < insertNum - 1; i++) {
+		*current = (*current)->next;
+	}
+	//노드를 처음에 삽입할 때
+	if (*pStart == *current) {
+		//(*new_node)->idNum = *cnt;
+		(*current)->prev = new_node;
+		(*new_node)->next = *current;
+		*pStart = *new_node;
+		
+	}
+	else {
+		//노드를 중간에 삽입할 때
+		//(*new_node)->idNum = *cnt;
+		(*new_node)->prev = *current;
+		(*current)->next->prev = *new_node;
+		(*new_node)->next = (*current)->next;
+		(*current)->next = *new_node;
+	}
 }
 
 void deleteTrvInfo(list **pStart, list **current) {
-	int num = 0;
-	printf("삭제하고 싶은 손님 ID번호를 입력해 주세요 : "); scanf("%d", &num);
+	int deleteNum = 0;
+	printf("삭제하고 싶은 손님 ID번호를 입력해 주세요 : "); scanf("%d", &deleteNum);
 	list *remove = NULL;
-	current = *pStart;
-	for (int i = 0; i < num - 1; i++) {
-		current = current->next;
+	*current = *pStart;
+	for (int i = 0; i < deleteNum - 1; i++) {
+		(*current) = (*current)->next;
+	}
+	//맨 처음 노드일 때
+	if (*pStart == *current) {
+		*pStart = (*current)->next;
+		free((*current));
+	}
+	//맨 마지막 노드일 때
+	else if ((*current)->next == NULL) {
+		(*current)->prev->next = NULL;
+		free((*current));
 
 	}
-	if (*pStart == remove) {
-		pStart = remove->next;
-	}
-	if (remove->next != NULL) {
-		remove->next->prev = remove->prev;
-	}
-
-	if (remove->prev != NULL) {
-		remove->prev->next = remove->next;
+	//중간 노드일 때
+	else if ((*current)->next != NULL && (*current)->prev != NULL) {
+		
+		(*current)->next->prev = (*current)->prev;
+		(*current)->prev->next = (*current)->next;
+		free((*current));
 	}
 	
-
-	free(remove);
 	
 }
 
