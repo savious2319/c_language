@@ -39,5 +39,11 @@
     <ClCompile Include="struct14_3_과제.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="test2.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="test.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

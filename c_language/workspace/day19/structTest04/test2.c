@@ -223,25 +223,38 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 		(*current)->prev = new_node;
 		(*new_node)->next = *current;
 		*pStart = *new_node;
+		(*pStart)->idNum = insertNum;
+		//*pStart = *current;
+		for (int i = 0; i < insertNum + 1; i++) {
+			(*current)->idNum++;
+			*current = (*current)->next;
+			printf("바뀐 숫자 : %d", (*current)->idNum);
+		}
+		while ((*current)->next != NULL); {
+			(*current)->idNum++;
+			printf("바뀐 숫자 : %d", (*current)->idNum);
+		}
+
 	}
 	else {
 		//노드를 중간에 삽입할 때
 		//(*new_node)->idNum = *cnt;
-		(*new_node)->prev = *current;
-		(*current)->next->prev = *new_node;
-		(*new_node)->next = (*current)->next;
-		(*current)->next = *new_node;
-	}
-	(*new_node)->idNum = insertNum + 1;
+		(*new_node)->next = *current;
+		(*current)->prev->next = *new_node;
+		(*new_node)->prev = (*current)->prev;
+		(*current)->prev = *new_node;
+	(*new_node)->idNum = insertNum;
 	*current = *pStart;
-	for (int i = 0; i < insertNum+1; i++) {
+	for (int i = 0; i < insertNum + 1 ; i++) {
 		*current = (*current)->next;
 		printf("바뀐 숫자 : %d", (*current)->idNum);
 	}
+	
 	do {
-		((*current)->idNum)++;
+		(*current)->idNum++;
 		printf("바뀐 숫자 : %d", (*current)->idNum);
 	} while ((*current)->next != NULL);
+}
 		
 
 		
@@ -259,6 +272,17 @@ void deleteTrvInfo(list **pStart, list **current) {
 	if (*pStart == *current) {
 		*pStart = (*current)->next;
 		free((*current));
+		(*pStart)->idNum = deleteNum;
+		*current = *pStart;
+		for (int i = 0; i < deleteNum + 1; i++) {
+			*current = (*current)->next;
+			printf("바뀐 숫자 : %d", (*current)->idNum);
+		}
+		do {
+			(*current)->idNum--;
+			printf("바뀐 숫자 : %d", (*current)->idNum);
+		} while ((*current)->next != NULL);
+
 	}
 	//맨 마지막 노드일 때
 	else if ((*current)->next == NULL) {

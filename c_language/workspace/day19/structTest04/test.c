@@ -227,10 +227,14 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 	else {
 		//노드를 중간에 삽입할 때
 		//(*new_node)->idNum = *cnt;
-		(*new_node)->prev = *current;
+		(*new_node)->next = *current;
+		(*current)->prev->next = *new_node;
+		(*new_node)->prev = (*current)->prev;
+		(*current)->prev = *new_node;
+		/*(*new_node)->prev = *current;
 		(*current)->next->prev = *new_node;
 		(*new_node)->next = (*current)->next;
-		(*current)->next = *new_node;
+		(*current)->next = *new_node;*/
 	}
 }
 
