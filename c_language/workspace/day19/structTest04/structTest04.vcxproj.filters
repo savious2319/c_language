@@ -21,9 +21,6 @@
     <ClCompile Include="struct14_1.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="struct14_2.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="struct15.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -43,6 +40,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="test.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="struct14_2_백성민.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

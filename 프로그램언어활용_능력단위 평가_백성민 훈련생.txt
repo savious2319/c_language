@@ -1,0 +1,374 @@
+<능력단위 평가>
+- 능력단위명 : 프로그램언어활용
+- 평가방법 : 포트폴리오
+- 평가내용 
+
+1. 구조체를 활용하여 연결리스트 프로젝트 제작
+
+평가항목
+ 1. 소스에 대한 구조 설명(10점) - 주석으로 기재
+   struct_14_2.c
+
+    #include <stdio.h>
+    /*  
+	제작 : 백성민
+	주제 : 연결리스트를 통한 여행관리 프로그램
+	제작기간 : 2020년 06월 01일~04일
+	사용툴 : Microsoft Visual Studio 2015
+	주요 기능 : 구조체, 연결리스트, 함수, 포인터 등
+	소스결과 : 
+			1. 여행 정보 입력하기
+			2. 여행 정보 추가하기
+			3. 여행 정보 수정하기
+			4. 여행 정보 삽입하기
+			5. 여행 정보 삭제하기
+			6. 원하는 여행 정보보기
+			7. 전체 여행 정보보기
+			8. 종료
+			원하는 번호를 선택해 주세요 :
+
+	먼저 프로그램을 실행하게 되면 메인함수에서 메뉴함수를 호출해 메뉴가 나옵니다.
+	메뉴함수 안에서 while문안에 switch문을 작성해서 그 안에서 사용자가 원하는 번호를
+	선택합니다. 선택한 번호에 따라 그 함수가 호출이되고 그 함수의 기능이 실행됩니다.
+	 
+			
+    */
+   
+  2. 구조체 사용(20점)
+     1) 자기참조 구조체 헤더부 작성
+	typedef struct List {
+	int idNum;  // 여행 손님객에 부여되는 ID 번호
+	tInfo t;
+	struct List *next;  // List 구조체의 자기참조 구조체 멤버 next
+	struct List *prev;  // List 구조체의 자기참조 구조체 멤버 prev
+	}list;
+     2) 노드 구조체 헤더부 작성
+	typedef struct TravelInfo {
+	char destination[20]; // 여행 목적지
+	int tourist; // 여행객 인원수
+	int cost; // 여행 경비
+	}tInfo;
+
+  3. 멤버변수 구성(20점)
+     1) 자기참조 구조체 멤버
+	typedef struct List {
+	int idNum;  // 여행 손님객에 부여되는 ID 번호
+	tInfo t;
+	struct List *next;  // List 구조체의 자기참조 구조체 멤버 next
+	struct List *prev;  // List 구조체의 자기참조 구조체 멤버 prev
+	}list;
+     2) 노드 구조체 멤버 변수 기재
+	typedef struct TravelInfo {
+	char destination[20]; // 여행 목적지
+	int tourist; // 여행객 인원수
+	int cost; // 여행 경비
+	}tInfo;
+
+  4. 링크드리스트 사용(10점)
+     1) 동적메모리 할당 소스 기재
+	
+	void inputTrvInfo(int *cnt, list **pStart, list **new_node, list **current) {
+	int input = 0;
+
+	printf("몇 명의 여행 정보를 입력하시겠습니까? : "); scanf_s("%d", &input);
+	puts("");
+	for (int i = 0; i < input; i++) {
+		getchar();
+		*new_node = (list *)malloc(sizeof(list));
+		printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+		printf("여행자 ID 번호 : %d\n", ++(*cnt));
+		printf("여행 목적지를 입력하세요 : "); gets((*new_node)->t.destination);
+		printf("여행 인원수를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.tourist);
+		printf("여행 경비를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.cost);
+		puts("");
+		(*new_node)->next = NULL;
+		//(*new_node)->prev = NULL;
+		(*new_node)->idNum = *cnt;
+		if (*pStart == NULL) {
+			*pStart = *new_node;
+			*current = *pStart;
+		}
+		else {
+			(*current)->next = *new_node;
+			(*new_node)->prev = *current;
+			*current = (*new_node);
+		}
+		}
+		}
+	
+	설명: 
+
+	먼저 메인함수에서 생성한 list *pStart, *new_node, *current 구조체 포인터 변수를 메뉴함수의
+	매개변수로 받고 입력함수에서는 이중 포인터로 전달받습니다. *pStart 변수는 노드의 시작이 되고
+	*new_node는 계속해서 생성되는 노드이고 마지막으로 *current 노드는 현재 위치의 노드입니다.
+	그래서 먼저 *new_node한테 동적메모리를 할당하고 (*new_node = (list *)malloc(sizeof(list));)
+	거기에 사용자의 정보를 입력받습니다. 그리고 입력받은 노드를 처음노드로하기 위해 *pStart노드에
+	대입하고 또 *pStart 를 *current에 대입시켜 현재 노드로 만듭니다. 그리고 두번째 입력받았을때는 현재 위치 노드
+	*current의 next와 *new_node의 prev를 연결시키고 이제 이 *new_node가 새로운 현재의 노드가 됩니다. 이 순서를
+	이 함수에서 계속 반복해주면서 새로운 노드를 생성시켜줍니다.
+	
+
+
+5. 사용자 정의 함수 3개 이상 사용(10점)
+     1) 함수목록(함수 프로토타입) 기재
+	//메뉴 함수
+	void menu(int *cnt, list *pStart, list *new_node, list *current);
+	//정보 입력 함수
+	void inputTrvInfo(int *cnt, list **pStart, list **new_node, list **current);
+	//정보 추가 함수
+	void addTrvInfo(int *cnt, list **pStart, list **new_node, list **current);
+	//정보 수정 함수
+	void updateTrvInfo(list **pStart, list **current);
+	//정보 삽입 함수
+	void insertTrvInfo(list **pStart, list **new_node, list **current);
+	//정보 삭제 함수
+	void deleteTrvInfo(list **pStart, list **current);
+	//사용자가 원하는 정보 출력 함수
+	void displaySelectedTrvInfo(list *pStart);
+	//전체 정보 출력 함수
+	void displayAllTrvInfo(list *pStart, list *current);
+
+
+  6. 삽입 삭제 추가 기능 구현 및 실행 여부(30점)
+     1)삽입 함수 기재
+	void insertTrvInfo(list **pStart, list **new_node, list **current) {
+	int insertNum = 0;
+	printf("정보를 삽입하고 싶은 위치는 몇번째인가요? : "); scanf_s("%d", &insertNum);
+	getchar();
+	*current = *pStart;
+	*new_node = (list *)malloc(sizeof(list));
+	printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+	printf("여행 목적지를 입력하세요 : "); gets((*new_node)->t.destination);
+	printf("여행 인원수를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.tourist);
+	printf("여행 경비를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.cost);
+	puts("");
+	for (int i = 0; i < insertNum - 1; i++) {
+		*current = (*current)->next;
+	}
+	//노드를 처음에 삽입할 때
+	if (*pStart == *current) {
+		//(*new_node)->idNum = *cnt;
+		(*current)->prev = new_node;
+		(*new_node)->next = *current;
+		*pStart = *new_node;
+		(*pStart)->idNum = insertNum;
+
+	/*	*current = *pStart;
+		for (int i = 0; i < insertNum + 1; i++) {
+			*current = (*current)->next;
+			(*current)->idNum++;
+			printf("for 바뀐 숫자 : %d", (*current)->idNum);
+		}
+		while ((*current)->next != NULL); {
+			(*current)->idNum++;
+			printf("바뀐 숫자 : %d", (*current)->idNum);
+		}*/
+
+	}
+	else {
+		//노드를 중간에 삽입할 때
+		//(*new_node)->idNum = *cnt;
+		(*new_node)->next = *current;
+		(*current)->prev->next = *new_node;
+		(*new_node)->prev = (*current)->prev;
+		(*current)->prev = *new_node;
+		(*new_node)->idNum = insertNum;
+
+		/**current = *pStart;
+		for (int i = 0; i < insertNum + 1 ; i++) {
+		*current = (*current)->next;
+		printf("바뀐 숫자 : %d", (*current)->idNum);
+		}
+
+		do {
+		(*current)->idNum++;
+		printf("바뀐 숫자 : %d", (*current)->idNum);
+		} while ((*current)->next != NULL);*/
+	}
+	}
+
+	설명 : 먼저 여행 손님의 정보를 입력받습니다.
+	
+	┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Seoul
+		여행 인원수 : 2명
+		여행 경비 : 200000원
+
+	┏━━━━━ 2번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Busan
+		여행 인원수 : 1명
+		여행 경비 : 100000원
+
+	┏━━━━━ 3번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Cheju
+		여행 인원수 : 1명
+		여행 경비 : 300000원
+
+
+	그 다음에 노드 앞이나 중간에 삽입 할 수 있습니다.
+
+	┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Tokyo
+		여행 인원수 : 1명
+		여행 경비 : 500000원
+
+	┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Seoul
+		여행 인원수 : 2명
+		여행 경비 : 200000원
+
+	┏━━━━━ 2번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Busan
+		여행 인원수 : 1명
+		여행 경비 : 100000원
+
+	┏━━━━━ 3번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Cheju
+		여행 인원수 : 1명
+		여행 경비 : 300000원
+
+	
+	
+
+     2)추가 함수 기재
+
+	void addTrvInfo(int *cnt, list **pStart, list **new_node, list **current) {
+	int input = 0;
+
+	printf("몇 명의 정보를 더 추가 입력하시겠습니까? : "); scanf_s("%d", &input);
+
+	puts("");
+	for (int i = 0; i < input; i++) {
+		getchar();
+		*new_node = (list *)malloc(sizeof(list));
+		printf("┏━━━━━ 여행 정보 ━━━━━┓\n");
+		printf("여행자 ID 번호 : %d\n", ++(*cnt));
+		printf("여행 목적지를 입력하세요 : "); gets((*new_node)->t.destination);
+		printf("여행 인원수를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.tourist);
+		printf("여행 경비를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.cost);
+		puts("");
+		(*new_node)->next = NULL;  //new_node는 맨 마지막 노드이기때문에 next를 NULL로 해줘야 한다!
+								   //(*new_node)->prev = NULL;
+		(*new_node)->idNum = *cnt;
+		if (*pStart == NULL) {
+			*pStart = *new_node;
+			*current = *pStart;
+		}
+		else {
+			while ((*current)->next != NULL) {
+				*current = (*current)->next;
+			}
+			(*current)->next = *new_node;
+			(*new_node)->prev = *current;
+			*current = (*new_node);
+		}
+	}
+}
+
+	설명 : 먼저 여행 손님 정보를 입력 받습니다.
+		
+		┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Seoul
+			여행 인원수 : 1명
+			여행 경비 : 450000원
+
+		┏━━━━━ 2번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Tokyo
+			여행 인원수 : 1명
+			여행 경비 : 670000원
+		
+		그 다음에 추가로 입력받고 싶은 여행 손님 수의 정보를 입력받고 출력합니다.
+
+	┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Seoul
+		여행 인원수 : 1명
+		여행 경비 : 450000원
+
+	┏━━━━━ 2번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Tokyo
+		여행 인원수 : 1명
+		여행 경비 : 670000원
+
+	┏━━━━━ 3번 손님 여행 정보 ━━━━━┓
+		여행 목적지 : Bangkok
+		여행 인원수 : 1명
+		여행 경비 : 350000원
+
+
+     3)삭제 항목 기재
+
+	void deleteTrvInfo(list **pStart, list **current) {
+	int deleteNum = 0;
+	printf("삭제하고 싶은 손님 ID번호를 입력해 주세요 : "); scanf_s("%d", &deleteNum);
+	*current = *pStart;
+	for (int i = 0; i < deleteNum - 1; i++) {
+		(*current) = (*current)->next;
+	}
+	//맨 처음 노드일 때
+	if (*pStart == *current) {
+		*pStart = (*current)->next;
+		free((*current));
+		(*pStart)->idNum = deleteNum;
+
+		/**current = *pStart;
+		for (int i = 0; i < deleteNum + 1; i++) {
+		*current = (*current)->next;
+		printf("바뀐 숫자 : %d", (*current)->idNum);
+		}
+		do {
+		(*current)->idNum--;
+		printf("바뀐 숫자 : %d", (*current)->idNum);
+		} while ((*current)->next != NULL);*/
+
+	}
+	//맨 마지막 노드일 때
+	else if ((*current)->next == NULL) {
+		(*current)->prev->next = NULL;
+		free((*current));
+
+	}
+	//중간 노드일 때
+	else if ((*current)->next != NULL && (*current)->prev != NULL) {
+
+		(*current)->next->prev = (*current)->prev;
+		(*current)->prev->next = (*current)->next;
+		free((*current));
+	}
+
+
+	}
+
+	설명 : 먼저 여행 손님 정보를 입력 받습니다.
+		
+		┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Seoul
+			여행 인원수 : 1명
+			여행 경비 : 450000원
+
+		┏━━━━━ 2번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Tokyo
+			여행 인원수 : 1명
+			여행 경비 : 670000원
+
+		┏━━━━━ 3번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Bangkok
+			여행 인원수 : 1명
+			여행 경비 : 350000원
+
+	그 다음 삭제하고 싶은 손님 ID 번호를 입력합니다. 그러면 이제 그 정보는 출력했을때 안보입니다.
+
+		┏━━━━━ 1번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Seoul
+			여행 인원수 : 1명
+			여행 경비 : 450000원
+
+		┏━━━━━ 2번 손님 여행 정보 ━━━━━┓
+			여행 목적지 : Tokyo
+			여행 인원수 : 1명
+			여행 경비 : 670000원
+		
+
+
+  8. 프로그램 작동 결과
+     1) 우수 / 양호 / 미흡 
+
