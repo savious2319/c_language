@@ -1,9 +1,9 @@
 ﻿  test2.c
-\\vmware-host\shared folders\도큐멘트\c_language\c_language\workspace\day19\structtest04\test2.c(114): warning C4047: '함수': 'int *'의 간접 참조 수준이 'int **'과(와) 다릅니다.
-\\vmware-host\shared folders\도큐멘트\c_language\c_language\workspace\day19\structtest04\test2.c(114): warning C4024: 'inputTrvInfo': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-\\vmware-host\shared folders\도큐멘트\c_language\c_language\workspace\day19\structtest04\test2.c(115): warning C4047: '함수': 'int *'의 간접 참조 수준이 'int **'과(와) 다릅니다.
-\\vmware-host\shared folders\도큐멘트\c_language\c_language\workspace\day19\structtest04\test2.c(115): warning C4024: 'addTrvInfo': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
-\\vmware-host\shared folders\도큐멘트\c_language\c_language\workspace\day19\structtest04\test2.c(137): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
-\\vmware-host\shared folders\도큐멘트\c_language\c_language\workspace\day19\structtest04\test2.c(223): warning C4047: '=': 'List *'의 간접 참조 수준이 'list **'과(와) 다릅니다.
-  structTest04.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\c_language\c_language\workspace\day19\Debug\structTest04.exe
-  structTest04.vcxproj -> \\vmware-host\Shared Folders\도큐멘트\c_language\c_language\workspace\day19\Debug\structTest04.pdb (Full PDB)
+d:\c_language\c_language\workspace\day19\structtest04\test2.c(114): warning C4047: '함수': 'int *'의 간접 참조 수준이 'int **'과(와) 다릅니다.
+d:\c_language\c_language\workspace\day19\structtest04\test2.c(114): warning C4024: 'inputTrvInfo': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+d:\c_language\c_language\workspace\day19\structtest04\test2.c(115): warning C4047: '함수': 'int *'의 간접 참조 수준이 'int **'과(와) 다릅니다.
+d:\c_language\c_language\workspace\day19\structtest04\test2.c(115): warning C4024: 'addTrvInfo': 형식 및 실제 매개 변수 1의 형식이 서로 다릅니다.
+d:\c_language\c_language\workspace\day19\structtest04\test2.c(137): warning C4013: 'gets'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+d:\c_language\c_language\workspace\day19\structtest04\test2.c(223): warning C4047: '=': 'List *'의 간접 참조 수준이 'list **'과(와) 다릅니다.
+  structTest04.vcxproj -> D:\c_language\c_language\workspace\day19\Debug\structTest04.exe
+  structTest04.vcxproj -> D:\c_language\c_language\workspace\day19\Debug\structTest04.pdb (Full PDB)

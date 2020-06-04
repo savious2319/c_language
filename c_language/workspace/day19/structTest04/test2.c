@@ -169,7 +169,7 @@ void addTrvInfo(int *cnt, list **pStart, list **new_node, list **current) {
 		printf("여행 인원수를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.tourist);
 		printf("여행 경비를 입력하세요 : "); scanf_s("%d", &(*new_node)->t.cost);
 		puts("");
-		(*new_node)->next = NULL;
+		(*new_node)->next = NULL;  //new_node는 맨 마지막 노드이기때문에 next를 NULL로 해줘야 한다!
 		//(*new_node)->prev = NULL;
 		(*new_node)->idNum = *cnt;
 		if (*pStart == NULL) {
@@ -224,11 +224,11 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 		(*new_node)->next = *current;
 		*pStart = *new_node;
 		(*pStart)->idNum = insertNum;
-		//*pStart = *current;
+		*current = *pStart;
 		for (int i = 0; i < insertNum + 1; i++) {
-			(*current)->idNum++;
 			*current = (*current)->next;
-			printf("바뀐 숫자 : %d", (*current)->idNum);
+			(*current)->idNum++;
+			printf("for 바뀐 숫자 : %d", (*current)->idNum);
 		}
 		while ((*current)->next != NULL); {
 			(*current)->idNum++;
@@ -244,7 +244,7 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 		(*new_node)->prev = (*current)->prev;
 		(*current)->prev = *new_node;
 	(*new_node)->idNum = insertNum;
-	*current = *pStart;
+	/**current = *pStart;
 	for (int i = 0; i < insertNum + 1 ; i++) {
 		*current = (*current)->next;
 		printf("바뀐 숫자 : %d", (*current)->idNum);
@@ -253,7 +253,7 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 	do {
 		(*current)->idNum++;
 		printf("바뀐 숫자 : %d", (*current)->idNum);
-	} while ((*current)->next != NULL);
+	} while ((*current)->next != NULL);*/
 }
 		
 
@@ -263,7 +263,6 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 void deleteTrvInfo(list **pStart, list **current) {
 	int deleteNum = 0;
 	printf("삭제하고 싶은 손님 ID번호를 입력해 주세요 : "); scanf_s("%d", &deleteNum);
-	list *remove = NULL;
 	*current = *pStart;
 	for (int i = 0; i < deleteNum - 1; i++) {
 		(*current) = (*current)->next;
@@ -273,7 +272,7 @@ void deleteTrvInfo(list **pStart, list **current) {
 		*pStart = (*current)->next;
 		free((*current));
 		(*pStart)->idNum = deleteNum;
-		*current = *pStart;
+		/**current = *pStart;
 		for (int i = 0; i < deleteNum + 1; i++) {
 			*current = (*current)->next;
 			printf("바뀐 숫자 : %d", (*current)->idNum);
@@ -281,7 +280,7 @@ void deleteTrvInfo(list **pStart, list **current) {
 		do {
 			(*current)->idNum--;
 			printf("바뀐 숫자 : %d", (*current)->idNum);
-		} while ((*current)->next != NULL);
+		} while ((*current)->next != NULL);*/
 
 	}
 	//맨 마지막 노드일 때
