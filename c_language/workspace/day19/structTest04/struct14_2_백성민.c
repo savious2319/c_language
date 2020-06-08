@@ -186,8 +186,8 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 		(*current)->prev = new_node;
 		(*new_node)->next = *current;
 		*pStart = *new_node;
-		(*pStart)->idNum = insertNum;
-	/*	*current = *pStart;
+	/*	(*pStart)->idNum = insertNum;
+		*current = *pStart;
 		for (int i = 0; i < insertNum + 1; i++) {
 			*current = (*current)->next;
 			(*current)->idNum++;
@@ -206,8 +206,8 @@ void insertTrvInfo(list **pStart, list **new_node, list **current) {
 		(*current)->prev->next = *new_node;
 		(*new_node)->prev = (*current)->prev;
 		(*current)->prev = *new_node;
-		(*new_node)->idNum = insertNum;
-		/**current = *pStart;
+		/*(*new_node)->idNum = insertNum;
+		*current = *pStart;
 		for (int i = 0; i < insertNum + 1 ; i++) {
 		*current = (*current)->next;
 		printf("¹Ù²ï ¼ıÀÚ : %d", (*current)->idNum);
